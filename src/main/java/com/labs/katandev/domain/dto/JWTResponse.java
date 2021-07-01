@@ -1,20 +1,22 @@
 package com.labs.katandev.domain.dto;
 
 import org.springframework.security.core.GrantedAuthority;
-
 import java.util.Collection;
 
-public class JwtResponse {
+/**
+ * Object to return as body in JWT Authentication.
+ */
+public class JWTResponse {
 
     private String token;
     private String bearer = "Bearer";
     private String username;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtResponse() {
+    public JWTResponse() {
     }
 
-    public JwtResponse(String token, String username, Collection<? extends GrantedAuthority> authorities) {
+    public JWTResponse(String token, String username, Collection<? extends GrantedAuthority> authorities) {
         this.token = token;
         this.username = username;
         this.authorities = authorities;

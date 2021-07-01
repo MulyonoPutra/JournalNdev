@@ -1,7 +1,8 @@
-package com.labs.katandev.service;
+package com.labs.katandev.service.impl;
 
 import com.labs.katandev.domain.entity.User;
 import com.labs.katandev.domain.entity.UserPrincipal;
+import com.labs.katandev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

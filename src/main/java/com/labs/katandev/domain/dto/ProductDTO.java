@@ -4,7 +4,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 
-public class ProductDto {
+public class ProductDTO {
 
     @NotBlank
     private String name;
@@ -12,12 +12,12 @@ public class ProductDto {
     @Min(0)
     private float price;
 
-    public ProductDto(@NotBlank String name, @Min(0) float price) {
+    public ProductDTO(@NotBlank String name, @Min(0) float price) {
         this.name = name;
         this.price = price;
     }
 
-    public ProductDto() {
+    public ProductDTO() {
     }
 
     public String getName() {

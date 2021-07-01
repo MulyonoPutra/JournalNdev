@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class JwtProvider {
+public class JWTProvider {
 
-    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+    private final static Logger logger = LoggerFactory.getLogger(JWTProvider.class);
 
     @Value("${jwt.secret}")
     private String secret;
@@ -21,7 +21,7 @@ public class JwtProvider {
     @Value("${jwt.expiration}")
     private int expiration;
 
-    public String generateToken(Authentication authentication){
+    public String generateToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
         return Jwts.builder().setSubject(userPrincipal.getUsername())
                 .setIssuedAt(new Date())
@@ -30,24 +30,24 @@ public class JwtProvider {
                 .compact();
     }
 
-    public String getUsernameFromToken(String token){
+    public String getUsernameFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateToken(String token){
+    public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
-        }catch (MalformedJwtException e){
-            logger.error("token mal formado");
-        }catch (UnsupportedJwtException e){
-            logger.error("token no soportado");
-        }catch (ExpiredJwtException e){
-            logger.error("token expirado");
-        }catch (IllegalArgumentException e){
-            logger.error("token vacío");
-        }catch (SignatureException e){
-            logger.error("fail en la firma");
+        } catch (MalformedJwtException e) {
+            logger.error("malformed token");
+        } catch (UnsupportedJwtException e) {
+            logger.error("token not supported");
+        } catch (ExpiredJwtException e) {
+            logger.error("Expired Token");
+        } catch (IllegalArgumentException e) {
+            logger.error("Empty token");
+        } catch (SignatureException e) {
+            logger.error("fail in the signature");
         }
         return false;
     }

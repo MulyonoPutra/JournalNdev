@@ -1,13 +1,13 @@
 package com.labs.katandev.controllers;
 
-import com.labs.katandev.domain.dto.JwtResponse;
+import com.labs.katandev.domain.dto.JWTResponse;
 import com.labs.katandev.domain.dto.Login;
 import com.labs.katandev.domain.dto.Messages;
 import com.labs.katandev.domain.dto.Register;
 import com.labs.katandev.domain.entity.Role;
 import com.labs.katandev.domain.entity.User;
 import com.labs.katandev.domain.enums.RoleName;
-import com.labs.katandev.security.JwtProvider;
+import com.labs.katandev.security.JWTProvider;
 import com.labs.katandev.service.RoleService;
 import com.labs.katandev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class AuthController {
     RoleService roleService;
 
     @Autowired
-    JwtProvider jwtProvider;
+    JWTProvider jwtProvider;
 
     @PostMapping("/register")
     public ResponseEntity<?> signUp(@Valid @RequestBody Register register, BindingResult bindingResult){
@@ -76,7 +76,7 @@ public class AuthController {
      * @return JWT Response
      */
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login(@Valid @RequestBody Login login, BindingResult bindingResult){
+    public ResponseEntity<JWTResponse> login(@Valid @RequestBody Login login, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity(new Messages("Invalid!"), HttpStatus.BAD_REQUEST);
         Authentication authentication =
@@ -84,7 +84,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         UserDetails userDetails = (UserDetails)authentication.getPrincipal();
-        JwtResponse jwtDto = new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+        JWTResponse jwtDto = new JWTResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities());
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }

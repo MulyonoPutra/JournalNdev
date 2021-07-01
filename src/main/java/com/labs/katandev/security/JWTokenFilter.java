@@ -1,6 +1,6 @@
 package com.labs.katandev.security;
 
-import com.labs.katandev.service.UserDetailsServiceImpl;
+import com.labs.katandev.service.impl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,19 +8,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JwtTokenFilter extends OncePerRequestFilter {
+public class JWTokenFilter extends OncePerRequestFilter {
 
-    private final static Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
+    private final static Logger logger = LoggerFactory.getLogger(JWTokenFilter.class);
 
     @Autowired
-    JwtProvider jwtProvider;
+    JWTProvider jwtProvider;
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;
@@ -39,7 +38,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
         } catch (Exception e) {
-            logger.error("fail en el método doFilter " + e.getMessage());
+            logger.error("Failed" + e.getMessage());
         }
         filterChain.doFilter(request, response);
     }

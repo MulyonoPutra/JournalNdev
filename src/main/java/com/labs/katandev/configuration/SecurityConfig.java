@@ -1,8 +1,8 @@
 package com.labs.katandev.configuration;
 
-import com.labs.katandev.security.JwtEntryPoint;
-import com.labs.katandev.security.JwtTokenFilter;
-import com.labs.katandev.service.UserDetailsServiceImpl;
+import com.labs.katandev.security.JWTEntryPoint;
+import com.labs.katandev.security.JWTokenFilter;
+import com.labs.katandev.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,11 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    JwtEntryPoint jwtEntryPoint;
+    JWTEntryPoint jwtEntryPoint;
 
     @Bean
-    public JwtTokenFilter jwtTokenFilter(){
-        return new JwtTokenFilter();
+    public JWTokenFilter jwtTokenFilter(){
+        return new JWTokenFilter();
     }
 
     @Bean

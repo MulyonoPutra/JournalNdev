@@ -1,7 +1,7 @@
 package com.labs.katandev.controllers;
 
 import com.labs.katandev.domain.dto.Messages;
-import com.labs.katandev.domain.dto.ProductDto;
+import com.labs.katandev.domain.dto.ProductDTO;
 import com.labs.katandev.domain.entity.Product;
 import com.labs.katandev.service.ProductService;
 import org.apache.commons.lang3.StringUtils;
@@ -47,7 +47,7 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody ProductDto productDto){
+    public ResponseEntity<?> create(@RequestBody ProductDTO productDto){
         if(StringUtils.isBlank(productDto.getName()))
             return new ResponseEntity<>(new Messages("BAD REQUEST"), HttpStatus.BAD_REQUEST);
         if(productDto.getPrice() < 0)
@@ -61,7 +61,7 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductDto productDto){
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductDTO productDto){
         if(!productService.existsById(id))
             return new ResponseEntity<>(new Messages("ID not found!"), HttpStatus.NOT_FOUND);
         if(productService.existsByName(productDto.getName()) && productService.getByName(productDto.getName()).get().getId() != id)
