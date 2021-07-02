@@ -1,9 +1,12 @@
 package com.labs.katandev.domain.dto;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CategoryDTO {
+public class CategoryDTO implements Serializable {
+
+    private Long id;
 
     @NotNull
     private String name;
@@ -18,9 +21,18 @@ public class CategoryDTO {
         this.name = name;
     }
 
+
     /**
      * Getter & Setter
      */
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
