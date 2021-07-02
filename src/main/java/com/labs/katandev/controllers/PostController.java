@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.net.URISyntaxException;
 import java.util.List;
 
 
@@ -24,8 +22,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/post")
 public class PostController {
-
-    private static final String ENTITY_NAME = "post";
 
     private final Logger log = LoggerFactory.getLogger(PostController.class);
 
