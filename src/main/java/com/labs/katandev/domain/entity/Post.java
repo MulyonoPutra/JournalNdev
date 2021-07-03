@@ -1,10 +1,16 @@
 package com.labs.katandev.domain.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-
+@Getter @Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "post")
 public class Post implements Serializable {
@@ -35,55 +41,7 @@ public class Post implements Serializable {
     private String imagesContentType;
 
     @ManyToOne
-    private Category category;
+    private Category category_post;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public byte[] getImages() {
-        return images;
-    }
-
-    public void setImages(byte[] images) {
-        this.images = images;
-    }
-
-    public String getImagesContentType() {
-        return imagesContentType;
-    }
-
-    public void setImagesContentType(String imagesContentType) {
-        this.imagesContentType = imagesContentType;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 }
