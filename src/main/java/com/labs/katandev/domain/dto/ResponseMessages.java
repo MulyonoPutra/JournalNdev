@@ -17,8 +17,11 @@ public class ResponseMessages {
     private Date timeStamp;
 
     private int httpStatusCode;
+
     private HttpStatus httpStatus;
+
     private String reason;
+
     private String message;
 
     public ResponseMessages() {}

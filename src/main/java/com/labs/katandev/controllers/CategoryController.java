@@ -28,7 +28,6 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-
     /**
      * {@code POST  /category} : Create a new category.
      *
@@ -84,6 +83,5 @@ public class CategoryController {
         categoryService.delete(id);
         return ResponseUtils.response(HttpStatus.OK, DELETED_SUCCESSFULLY);
     }
-
 
 }

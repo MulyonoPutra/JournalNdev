@@ -85,11 +85,10 @@ public class AuthController {
     public ResponseEntity<JWTResponse> login(@Valid @RequestBody Login login, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(new Messages("Invalid!"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Messages(INVALID), HttpStatus.BAD_REQUEST);
         }
 
-        Authentication auth = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
+        Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(auth);
         String jwt = jwtProvider.generateToken(auth);
         UserDetails userDetails = (UserDetails) auth.getPrincipal();

@@ -20,9 +20,12 @@ import java.util.Date;
  * last modified by attributes.
  */
 
-@Getter @Setter @ToString
+@Getter 
+@Setter
+@ToString
 @EqualsAndHashCode
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractAuditingEntity<T> {
