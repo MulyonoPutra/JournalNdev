@@ -1,19 +1,15 @@
 package com.labs.katandev.controllers;
 
-import com.labs.katandev.domain.dto.CategoryDTO;
 import com.labs.katandev.domain.dto.PostDTO;
 import com.labs.katandev.domain.dto.ResponseMessages;
 import com.labs.katandev.domain.entity.Post;
 import com.labs.katandev.exception.BadException;
-import com.labs.katandev.mapper.PostMapper;
-import com.labs.katandev.repository.PostRepository;
 import com.labs.katandev.service.PostService;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 
 import com.labs.katandev.utils.ResponseUtils;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -90,7 +86,7 @@ public class PostController {
    */
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseMessages> deletePost(@PathVariable Long id) {
-      log.debug("REST request to delete Category : {}", id);
+      log.debug("REST request to delete Post : {}", id);
       postService.delete(id);
       return ResponseUtils.response(HttpStatus.OK, DELETED_SUCCESSFULLY);
     }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @EnableAutoConfiguration
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface PostMapper extends EntityMapper<PostDTO, Post> {
+    @Mapping(target = "category_post", source = "category_post", qualifiedByName = "id")
+    PostDTO toDto(Post s);
 }
 

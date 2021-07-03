@@ -22,7 +22,7 @@ import static com.labs.katandev.constants.ResponseConstants.DELETED_SUCCESSFULLY
 @RequestMapping("/api/category")
 public class CategoryController {
 
-    private final Logger log = LoggerFactory.getLogger(PostController.class);
+    private final Logger log = LoggerFactory.getLogger(CategoryController.class);
 
     private final CategoryService categoryService;
 
