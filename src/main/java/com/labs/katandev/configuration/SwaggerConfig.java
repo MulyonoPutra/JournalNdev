@@ -27,8 +27,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfo(
-                "Demo API",
-                "This API for documentation",
+                "KataNdev Restful API",
+                "API Documentation",
                 "API Term of Services",
                 "Term of Services",
                 new Contact("Mulyono Putra", "@mulyonoputra", "mulyonoputra94@gmail.com"),

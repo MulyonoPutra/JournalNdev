@@ -3,7 +3,6 @@ package com.labs.katandev.controllers;
 import java.util.Set;
 import java.util.HashSet;
 import javax.validation.Valid;
-
 import com.labs.katandev.domain.dto.JWTResponse;
 import com.labs.katandev.domain.dto.Login;
 import com.labs.katandev.domain.dto.Messages;
@@ -14,7 +13,6 @@ import com.labs.katandev.domain.enums.RoleName;
 import com.labs.katandev.security.JWTProvider;
 import com.labs.katandev.service.RoleService;
 import com.labs.katandev.service.UserService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

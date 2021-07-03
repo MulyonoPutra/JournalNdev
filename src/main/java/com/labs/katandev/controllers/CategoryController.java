@@ -1,21 +1,19 @@
 package com.labs.katandev.controllers;
 
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.labs.katandev.domain.dto.CategoryDTO;
 import com.labs.katandev.domain.dto.ResponseMessages;
 import com.labs.katandev.domain.entity.Category;
 import com.labs.katandev.exception.BadException;
 import com.labs.katandev.service.CategoryService;
 import com.labs.katandev.utils.ResponseUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
-
 import static com.labs.katandev.constants.ResponseConstants.DELETED_SUCCESSFULLY;
 
 @RestController
