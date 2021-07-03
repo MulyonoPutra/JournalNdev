@@ -40,10 +40,7 @@ public class CardController {
      * @throws BadException if the Location URI syntax is incorrect.
      */
     @PostMapping
-    public ResponseEntity<CardDTO> createCard(
-        @Valid @RequestBody CardDTO cardDTO
-    )
-        throws BadException {
+    public ResponseEntity<CardDTO> createCard(@Valid @RequestBody CardDTO cardDTO) throws BadException {
         log.debug("REST request to save Card : {}", cardDTO);
         if (cardDTO.getId() != null) {
         throw new BadException("Error!");

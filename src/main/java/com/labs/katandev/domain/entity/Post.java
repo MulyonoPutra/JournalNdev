@@ -8,12 +8,12 @@ import java.io.Serializable;
 
 @Getter @Setter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "post")
-public class Post implements Serializable {
+public class Post extends AbstractAuditingEntity<String> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,9 +1,12 @@
 package com.labs.katandev;
 
+import com.labs.katandev.utils.AuditorAwareImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -12,17 +15,32 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @SpringBootApplication
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 public class KataNdevApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KataNdevApplication.class, args);
     }
 
+    /**
+     * Init ModelMapper Library
+     */
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
 
+    /**
+     * Init Spring Auditor
+     */
+    @Bean
+    public AuditorAware<String> auditorAware(){
+        return new AuditorAwareImpl();
+    }
+
+    /**
+     * Disable CORS
+     */
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
