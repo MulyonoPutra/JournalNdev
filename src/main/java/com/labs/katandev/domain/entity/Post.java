@@ -29,9 +29,9 @@ public class Post extends AbstractAuditingEntity<String> implements Serializable
     @Column(name = "content", nullable = false)
     private String content;
 
-    //    @NotNull
-    //    @Column(name = "date", nullable = false)
-    //    private Instant date;
+    @NotNull
+    @Column(name = "author", nullable = false)
+    private String author;
 
     @Lob
     @Column(name = "images", nullable = false)

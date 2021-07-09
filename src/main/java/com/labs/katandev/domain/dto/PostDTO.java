@@ -20,6 +20,9 @@ public class PostDTO implements Serializable {
     @Lob
     private String content;
 
+    @NotNull
+    private String author;
+
     @Lob
     private byte[] images;
 
