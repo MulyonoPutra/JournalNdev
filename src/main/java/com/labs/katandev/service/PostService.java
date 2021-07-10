@@ -53,7 +53,18 @@ public interface PostService {
      */
     void delete(Long id);
 
+    /**
+     * Find Post Data by CategoryId
+     *
+     * @param categoryId the id of the entity.
+     */
     List<Post> findPostByCategoryId(Long categoryId);
 
+
+    /**
+     * Find Post Data by Author
+     *
+     * @param author the parameter of the entity.
+     */
     List<Post> findByAuthorName(String author) ;
 }

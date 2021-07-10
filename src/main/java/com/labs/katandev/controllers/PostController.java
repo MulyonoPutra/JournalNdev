@@ -89,11 +89,23 @@ public class PostController {
       return ResponseUtils.response(HttpStatus.OK, DELETED_SUCCESSFULLY);
     }
 
+    /**
+     * {@code GET  /post/search/category/:categoryId} : find the "id" category.
+     *
+     * @param categoryId the id of the postDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
     @GetMapping("/search/category/{categoryId}")
     public List<Post> getProductByCategory(@PathVariable("categoryId") Long categoryId) {
         return postService.findPostByCategoryId(categoryId);
     }
 
+    /**
+     * {@code POST  /post/search/author} : find the "author".
+     *
+     * @param search the key of the postDTO to find author.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
     @PostMapping("/search/author")
     public List<Post> getPostByAuthorName(@RequestBody SearchData search) {
         return postService.findByAuthorName(search.getSearchKey());
