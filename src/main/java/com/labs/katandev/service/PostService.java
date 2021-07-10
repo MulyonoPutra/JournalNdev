@@ -54,4 +54,6 @@ public interface PostService {
     void delete(Long id);
 
     List<Post> findPostByCategoryId(Long categoryId);
+
+    List<Post> findByAuthorName(String author) ;
 }

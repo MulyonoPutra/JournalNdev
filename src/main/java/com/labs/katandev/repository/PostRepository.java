@@ -13,6 +13,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     List<Post> findByTitleContains(String title);
 
+    List<Post> findByAuthorContains(String author);
+
     @Query("SELECT p FROM Post p WHERE p.category_post.id LIKE :categoryId")
     public List<Post> findProductByCategory(@PathParam("categoryId") Long categoryId);
 }

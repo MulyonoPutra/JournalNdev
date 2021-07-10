@@ -2,6 +2,7 @@ package com.labs.katandev.controllers;
 
 import com.labs.katandev.domain.dto.PostDTO;
 import com.labs.katandev.domain.dto.ResponseMessages;
+import com.labs.katandev.domain.dto.SearchData;
 import com.labs.katandev.domain.entity.Post;
 import com.labs.katandev.exception.BadException;
 import com.labs.katandev.service.PostService;
@@ -91,5 +92,10 @@ public class PostController {
     @GetMapping("/search/category/{categoryId}")
     public List<Post> getProductByCategory(@PathVariable("categoryId") Long categoryId) {
         return postService.findPostByCategoryId(categoryId);
+    }
+
+    @PostMapping("/search/author")
+    public List<Post> getPostByAuthorName(@RequestBody SearchData search) {
+        return postService.findByAuthorName(search.getSearchKey());
     }
 }

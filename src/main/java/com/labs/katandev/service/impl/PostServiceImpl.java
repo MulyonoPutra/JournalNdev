@@ -79,5 +79,10 @@ public class PostServiceImpl implements PostService {
         return postRepository.findProductByCategory(categoryId);
     }
 
+    @Override
+    public List<Post> findByAuthorName(String author) {
+        return postRepository.findByAuthorContains(author);
+    }
+
 
 }
