@@ -73,4 +73,11 @@ public class PostServiceImpl implements PostService {
         log.debug("Request to delete Post : {}", id);
         postRepository.deleteById(id);
     }
+
+    @Override
+    public List<Post> findPostByCategoryId(Long categoryId) {
+        return postRepository.findProductByCategory(categoryId);
+    }
+
+
 }

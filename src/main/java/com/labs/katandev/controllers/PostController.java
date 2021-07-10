@@ -75,7 +75,6 @@ public class PostController {
       return new ResponseEntity(post, HttpStatus.OK);
     }
 
-
   /**
    * {@code DELETE  /post/:id} : delete the "id" post.
    *
@@ -89,4 +88,8 @@ public class PostController {
       return ResponseUtils.response(HttpStatus.OK, DELETED_SUCCESSFULLY);
     }
 
+    @GetMapping("/search/category/{categoryId}")
+    public List<Post> getProductByCategory(@PathVariable("categoryId") Long categoryId) {
+        return postService.findPostByCategoryId(categoryId);
+    }
 }
