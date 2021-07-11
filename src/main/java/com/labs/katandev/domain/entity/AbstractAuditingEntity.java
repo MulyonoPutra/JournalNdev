@@ -34,7 +34,7 @@ public abstract class AbstractAuditingEntity<T> {
     protected T createdBy;
 
     @CreatedDate
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy hh:mm:ss", timezone = "Asia/Jakarta")
     protected Date createdDate;
 
